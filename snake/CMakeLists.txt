@@ -4,7 +4,19 @@ project(snake VERSION 0.1.0)
 include(CTest)
 enable_testing()
 
-add_executable(snake main.cpp init_background.cpp affichage.cpp serpent.cpp place_point_serpent.cpp place_point_background.cpp place_serpent.cpp init_game.cpp move_left.cpp move_right.cpp move_up.cpp move_down.cpp keyboard.cpp)
+include_directories("./includes")
+
+FILE(GLOB mainSources *.cpp)
+FILE(GLOB cppSources cpp/*.cpp)
+
+add_executable (snake
+        ${mainSources}
+        ${cppSources}
+)
+
+target_include_directories(snake PUBLIC
+        "${PROJECT_SOURCE_DIR}/includes")
+        
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
