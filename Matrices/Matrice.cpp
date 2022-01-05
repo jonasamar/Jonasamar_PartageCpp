@@ -1,6 +1,13 @@
 #include "Matrice.h"
 #include <iostream>
 #include <vector>
+#include <cmath>
+
+Matrice::Matrice(){}
+
+Matrice::Matrice(const int &l, const int &c, const std::vector<std::vector<float> > &mat) : nb_lignes(l), nb_colonnes(c), val(mat){}
+
+Matrice::~Matrice(){}
 
 void Matrice::setnb_lignes(int nb_lignes)
 {
@@ -20,6 +27,7 @@ void Matrice::setval(std::vector<std::vector<float> > val)
 void Matrice::saisir()
 {
     float coeff;
+
     std::cout<<"Nombre de lignes de la matrice :"; std::cin >> nb_lignes;
     std::cout<<"Nombre de colonnes de la matrice :"; std::cin >> nb_colonnes;
 
@@ -35,7 +43,6 @@ void Matrice::saisir()
         }
         val.push_back(ligne);
     }
-
 }
 
 void Matrice::afficher()
@@ -53,20 +60,35 @@ void Matrice::afficher()
 
 Matrice Matrice::matrice_nulle(int taille_y, int taille_x)
 {
-    Matrice Mat_nulle;
-    Mat_nulle.nb_lignes = taille_x;
-    Mat_nulle.nb_colonnes = taille_y;
     std::vector<float> ligne;
+    std::vector<std::vector<float> > mat;
+
     ligne.clear();
-    for(int j=0; j<taille_y; j++)
+    for(int j=0; j<taille_x; j++)
     {
         ligne.push_back(0.0);
     }
-    for (int i=0; i<taille_x; i++)
+
+    mat.clear();
+    for (int i=0; i<taille_y; i++)
     {
-        Mat_nulle.val.push_back(ligne);
+        mat.push_back(ligne);
     }
+
+    Matrice Mat_nulle(taille_y, taille_x, mat);
     return Mat_nulle;
+}
+
+Matrice Matrice::matrice_identite(int taille)
+{
+    Matrice identite;
+    identite = Matrice::matrice_nulle(taille, taille);
+    
+    for(int i=0; i<taille; i++)
+    {
+        identite.val[i][i] = 1.0;
+    }
+    return identite;
 }
 
 Matrice Matrice::operator+(const Matrice &M)
@@ -94,7 +116,7 @@ Matrice Matrice::operator-(const Matrice &M)
     if  (M.nb_lignes == nb_lignes && M.nb_colonnes == nb_colonnes) 
     {
         Matrice Diff;
-        Diff = matrice_nulle(nb_lignes, nb_colonnes);
+        Diff = Matrice::matrice_nulle(nb_lignes, nb_colonnes);
 
         for(int i=0; i<nb_lignes; i++)
         {
@@ -114,20 +136,18 @@ Matrice Matrice::operator*(const Matrice &M)
     if  (M.nb_lignes == nb_colonnes) 
     {
         Matrice Prod;
-        Prod = matrice_nulle(nb_lignes, M.nb_colonnes);
+        Prod = Matrice::matrice_nulle(nb_lignes, M.nb_colonnes);
+        //Prod.afficher();
 
         for(int i=0; i<nb_lignes; i++)
         {
-            
-            for (int j=0; j<nb_colonnes; j++)
+            for (int j=0; j<M.nb_colonnes; j++)
             {
-                float coeff=0;
                 for (int k=0; k<nb_colonnes; k++)
                 {
-                    coeff = coeff + val[i][k]*M.val[k][j];
-
+                    Prod.val[i][j] = Prod.val[i][j] + val[i][k]*M.val[k][j];
                 }
-                Prod.val[i][j]=  coeff ;
+                //std::cout<<Prod.val[i][j]<<std::endl;
             }
         }
            return Prod;
@@ -136,7 +156,7 @@ Matrice Matrice::operator*(const Matrice &M)
     return M;
 }
 
-Matrice Matrice::multiply(const float lambda)
+Matrice Matrice::operator*(const float &lambda)
 {
     Matrice Res;
     Res = Matrice::matrice_nulle(nb_lignes, nb_colonnes);
@@ -149,4 +169,64 @@ Matrice Matrice::multiply(const float lambda)
         }
     }
     return Res;
+}
+
+
+void Matrice::operator=(const Matrice &M)
+{
+    nb_lignes = M.nb_lignes;
+    nb_colonnes = M.nb_colonnes;
+    val = M.val;
+
+}
+
+Matrice Matrice::operator^(const int &n)
+{
+    Matrice mat(nb_lignes, nb_colonnes, val);
+    Matrice Res;
+    Res = mat;
+
+    for(int i=0; i<n; i++)
+    {
+        Res = Res*mat;
+    }
+
+    return Res;
+}
+
+Matrice Matrice::T()
+{
+    Matrice transpose;
+    transpose = Matrice::matrice_nulle(nb_colonnes, nb_lignes);
+    //transpose.afficher();
+
+    for(int i=0; i<nb_lignes; i++)
+    {
+        for (int j=0; j<nb_colonnes; j++)
+        {
+            transpose.val[j][i]=  val[i][j];
+        }
+    }
+    return transpose;
+}
+
+float Matrice::Trace()
+{
+    if (nb_lignes == nb_colonnes)
+    {
+        float trace=0;
+
+        for(int i=0; i<nb_lignes; i++)
+        {
+            trace = trace + val[i][i];
+        }
+        return trace;
+    }
+    std::cout<<"La matrice n'est pas carrée ! (la valeur retournée par défaut est 0)"<< std::endl;
+    return 0;
+}
+
+float Matrice::norme()
+{
+    return sqrt(((*this).T()*(*this)).val[0][0]);
 }
