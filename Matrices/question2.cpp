@@ -29,6 +29,7 @@ Matrix Euler_explicit(float dx, float dt, float tf)
     x.change_coeff(0, N_x - 1, 1.);
 
     //x.afficher();
+    //std::cout << "x contruit"<<std::endl;
 
     //discrétisation temporelle
     int N_tps = int(tf/dt) + 1; //il faut que t(N_tps - 1) = (N_tps - 1)dt <= 1 < (N_tps)dt
@@ -41,6 +42,7 @@ Matrix Euler_explicit(float dx, float dt, float tf)
     t.change_coeff(0, N_tps - 1, tf);
 
     //t.afficher();
+    //std::cout << "t contruit"<<std::endl;
 
     //initialisation de la matrice des températures
     Matrix T;
@@ -52,6 +54,8 @@ Matrix Euler_explicit(float dx, float dt, float tf)
     }
 
     //T.afficher();
+    //std::cout << "T contruit"<<std::endl;
+
 
     //création de la matrice K
     Matrix K;
@@ -76,14 +80,19 @@ Matrix Euler_explicit(float dx, float dt, float tf)
     }
 
     //K.afficher();
+    //std::cout << "K contruit"<<std::endl;
 
     //Euler explicit
-    for (int k=0; k<N_tps - 1; k++)
+    for (int k=0; k<N_tps - 1; k++) //il faut qu'au dernier passage k+1 = N_x - 1
     {
+        //std::cout << k << " passages dans la boucle"<<std::endl;
         T.change_colonne(k+1, T.colonne(k) - K*T.colonne(k)*dt);
     }
-    T.change_ligne(0, Matrix::matrice_nulle(N_x, 1)); // T(0, t) = 0
-    T.change_ligne(N_x - 1, Matrix::matrice_nulle(N_x, 1)); // T(L, t) = 0
+    T.change_ligne(0, Matrix::matrice_nulle(N_tps, 1)); // T(0, t) = 0
+    //std::cout << " bord 0 corrigé "<<std::endl;
+    T.change_ligne(N_x - 1, Matrix::matrice_nulle(N_tps, 1)); // T(L, t) = 0
+    //std::cout <<" bord 1 corrigé"<<std::endl;
+
     return T;
 }
 

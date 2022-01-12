@@ -7,13 +7,13 @@ int main()
 {
     char rep[3];
 
-    std::cout << "Voulez-vous tester les opérations de la classe Matrix ? (oui/non)"; std::cin >> rep;
+    std::cout << "Voulez-vous tester les opérations de la classe Matrix ? (oui/non) : "; std::cin >> rep;
     if (std::string(rep) == "oui")
     {
         tests_q1();
     }
 
-    std::cout << "Voulez-vous afficher la question 2 ? (oui/non)"; std::cin >> rep;
+    std::cout << "Voulez-vous créer un nouveau fichier des températures (T(x,t)) ? (oui/non) : "; std::cin >> rep;
     if (std::string(rep) == "oui")
     {
         Matrix T;

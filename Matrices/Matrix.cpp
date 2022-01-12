@@ -45,6 +45,7 @@ void Matrix::change_ligne(int i, Matrix new_line) // new_line est un vecteur col
 {
     for (int j=0; j<nb_colonnes; j++)
     {
+        //std::cout << j << " passages dans la boucle cl"<<std::endl;
         (*this).change_coeff(i, j, new_line.coeff(j, 0));
     }
 }
@@ -52,8 +53,9 @@ void Matrix::change_ligne(int i, Matrix new_line) // new_line est un vecteur col
 void Matrix::change_colonne(int j, Matrix new_column) // new_column est un vecteur colonne 
                                                       // la numérotation commence toujours à 0
 {
-    for (int i=0; i<nb_colonnes; i++)
+    for (int i=0; i<nb_lignes; i++)
     {
+        //std::cout << i << " passages dans la boucle cl"<<std::endl;
         (*this).change_coeff(i, j, new_column.coeff(i, 0));
     }
 }
@@ -321,11 +323,15 @@ void Matrix::WriteToFile(const std::string &file_name) const
     {
         std::ofstream out(std::string("../data/") + file_name);
 
+        out << "\n";
         for (int i = 0; i < nb_lignes; i++)
         {
             for (int j = 0; j < nb_colonnes; j++)
             {
-                out << val[i][j] << ";";
+                out << val[i][j];
+                if (j < nb_colonnes -1) //permet d'éviter d'avoir la création d'une colonne de Nan 
+                                      //dans le tableau pandas associé au fichier (dans trace_T))
+                out << ";";
             }
             out << "\n";
         }

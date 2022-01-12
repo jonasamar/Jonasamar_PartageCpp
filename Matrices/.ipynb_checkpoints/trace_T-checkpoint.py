@@ -32,6 +32,6 @@ def trace_T(file_name, tf = 0.05):
     return
 
 
-trace_T("test6.txt")
+trace_T("test7.txt")
 
 
