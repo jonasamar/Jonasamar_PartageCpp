@@ -523,29 +523,29 @@ Experimental/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Experimental.dir/build.make CMakeFiles/Experimental.dir/build
 .PHONY : Experimental/fast
 
-Matrice.o: Matrice.cpp.o
-.PHONY : Matrice.o
+Matrix.o: Matrix.cpp.o
+.PHONY : Matrix.o
 
 # target to build an object file
-Matrice.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/Matrice.cpp.o
-.PHONY : Matrice.cpp.o
+Matrix.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/Matrix.cpp.o
+.PHONY : Matrix.cpp.o
 
-Matrice.i: Matrice.cpp.i
-.PHONY : Matrice.i
+Matrix.i: Matrix.cpp.i
+.PHONY : Matrix.i
 
 # target to preprocess a source file
-Matrice.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/Matrice.cpp.i
-.PHONY : Matrice.cpp.i
+Matrix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/Matrix.cpp.i
+.PHONY : Matrix.cpp.i
 
-Matrice.s: Matrice.cpp.s
-.PHONY : Matrice.s
+Matrix.s: Matrix.cpp.s
+.PHONY : Matrix.s
 
 # target to generate assembly for a file
-Matrice.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/Matrice.cpp.s
-.PHONY : Matrice.cpp.s
+Matrix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/Matrix.cpp.s
+.PHONY : Matrix.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -570,6 +570,54 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+question2.o: question2.cpp.o
+.PHONY : question2.o
+
+# target to build an object file
+question2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question2.cpp.o
+.PHONY : question2.cpp.o
+
+question2.i: question2.cpp.i
+.PHONY : question2.i
+
+# target to preprocess a source file
+question2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question2.cpp.i
+.PHONY : question2.cpp.i
+
+question2.s: question2.cpp.s
+.PHONY : question2.s
+
+# target to generate assembly for a file
+question2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question2.cpp.s
+.PHONY : question2.cpp.s
+
+tests_q1.o: tests_q1.cpp.o
+.PHONY : tests_q1.o
+
+# target to build an object file
+tests_q1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/tests_q1.cpp.o
+.PHONY : tests_q1.cpp.o
+
+tests_q1.i: tests_q1.cpp.i
+.PHONY : tests_q1.i
+
+# target to preprocess a source file
+tests_q1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/tests_q1.cpp.i
+.PHONY : tests_q1.cpp.i
+
+tests_q1.s: tests_q1.cpp.s
+.PHONY : tests_q1.s
+
+# target to generate assembly for a file
+tests_q1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/tests_q1.cpp.s
+.PHONY : tests_q1.cpp.s
 
 # Help Target
 help:
@@ -611,12 +659,18 @@ help:
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
 	@echo "... test01"
-	@echo "... Matrice.o"
-	@echo "... Matrice.i"
-	@echo "... Matrice.s"
+	@echo "... Matrix.o"
+	@echo "... Matrix.i"
+	@echo "... Matrix.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... question2.o"
+	@echo "... question2.i"
+	@echo "... question2.s"
+	@echo "... tests_q1.o"
+	@echo "... tests_q1.i"
+	@echo "... tests_q1.s"
 .PHONY : help
 
 

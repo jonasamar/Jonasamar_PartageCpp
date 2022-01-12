@@ -1,6 +1,5 @@
-CMakeFiles/test01.dir/main.cpp.o: \
-  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/main.cpp \
-  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrix.h \
+CMakeFiles/test01.dir/question2.cpp.o: \
+  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.cpp \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/iostream \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__config \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/pthread.h \
@@ -225,7 +224,10 @@ CMakeFiles/test01.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__bsd_locale_defaults.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/bitset \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__bit_reference \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/cmath \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/math.h \
+  /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/math.h \
+  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrix.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__split_buffer \
-  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/tests_q1.h \
   /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.h

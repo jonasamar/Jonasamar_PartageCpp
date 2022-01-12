@@ -83,33 +83,65 @@ CMakeFiles/test01.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test01.dir/main.cpp.s"
 	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jonasamar/Jonasamar_PartageCpp/Matrices/main.cpp -o CMakeFiles/test01.dir/main.cpp.s
 
-CMakeFiles/test01.dir/Matrice.cpp.o: CMakeFiles/test01.dir/flags.make
-CMakeFiles/test01.dir/Matrice.cpp.o: ../Matrice.cpp
-CMakeFiles/test01.dir/Matrice.cpp.o: CMakeFiles/test01.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test01.dir/Matrice.cpp.o"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test01.dir/Matrice.cpp.o -MF CMakeFiles/test01.dir/Matrice.cpp.o.d -o CMakeFiles/test01.dir/Matrice.cpp.o -c /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrice.cpp
+CMakeFiles/test01.dir/Matrix.cpp.o: CMakeFiles/test01.dir/flags.make
+CMakeFiles/test01.dir/Matrix.cpp.o: ../Matrix.cpp
+CMakeFiles/test01.dir/Matrix.cpp.o: CMakeFiles/test01.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test01.dir/Matrix.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test01.dir/Matrix.cpp.o -MF CMakeFiles/test01.dir/Matrix.cpp.o.d -o CMakeFiles/test01.dir/Matrix.cpp.o -c /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrix.cpp
 
-CMakeFiles/test01.dir/Matrice.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test01.dir/Matrice.cpp.i"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrice.cpp > CMakeFiles/test01.dir/Matrice.cpp.i
+CMakeFiles/test01.dir/Matrix.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test01.dir/Matrix.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrix.cpp > CMakeFiles/test01.dir/Matrix.cpp.i
 
-CMakeFiles/test01.dir/Matrice.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test01.dir/Matrice.cpp.s"
-	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrice.cpp -o CMakeFiles/test01.dir/Matrice.cpp.s
+CMakeFiles/test01.dir/Matrix.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test01.dir/Matrix.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrix.cpp -o CMakeFiles/test01.dir/Matrix.cpp.s
+
+CMakeFiles/test01.dir/tests_q1.cpp.o: CMakeFiles/test01.dir/flags.make
+CMakeFiles/test01.dir/tests_q1.cpp.o: ../tests_q1.cpp
+CMakeFiles/test01.dir/tests_q1.cpp.o: CMakeFiles/test01.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test01.dir/tests_q1.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test01.dir/tests_q1.cpp.o -MF CMakeFiles/test01.dir/tests_q1.cpp.o.d -o CMakeFiles/test01.dir/tests_q1.cpp.o -c /Users/jonasamar/Jonasamar_PartageCpp/Matrices/tests_q1.cpp
+
+CMakeFiles/test01.dir/tests_q1.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test01.dir/tests_q1.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jonasamar/Jonasamar_PartageCpp/Matrices/tests_q1.cpp > CMakeFiles/test01.dir/tests_q1.cpp.i
+
+CMakeFiles/test01.dir/tests_q1.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test01.dir/tests_q1.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jonasamar/Jonasamar_PartageCpp/Matrices/tests_q1.cpp -o CMakeFiles/test01.dir/tests_q1.cpp.s
+
+CMakeFiles/test01.dir/question2.cpp.o: CMakeFiles/test01.dir/flags.make
+CMakeFiles/test01.dir/question2.cpp.o: ../question2.cpp
+CMakeFiles/test01.dir/question2.cpp.o: CMakeFiles/test01.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test01.dir/question2.cpp.o"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test01.dir/question2.cpp.o -MF CMakeFiles/test01.dir/question2.cpp.o.d -o CMakeFiles/test01.dir/question2.cpp.o -c /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.cpp
+
+CMakeFiles/test01.dir/question2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test01.dir/question2.cpp.i"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.cpp > CMakeFiles/test01.dir/question2.cpp.i
+
+CMakeFiles/test01.dir/question2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test01.dir/question2.cpp.s"
+	/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.cpp -o CMakeFiles/test01.dir/question2.cpp.s
 
 # Object files for target test01
 test01_OBJECTS = \
 "CMakeFiles/test01.dir/main.cpp.o" \
-"CMakeFiles/test01.dir/Matrice.cpp.o"
+"CMakeFiles/test01.dir/Matrix.cpp.o" \
+"CMakeFiles/test01.dir/tests_q1.cpp.o" \
+"CMakeFiles/test01.dir/question2.cpp.o"
 
 # External object files for target test01
 test01_EXTERNAL_OBJECTS =
 
 test01: CMakeFiles/test01.dir/main.cpp.o
-test01: CMakeFiles/test01.dir/Matrice.cpp.o
+test01: CMakeFiles/test01.dir/Matrix.cpp.o
+test01: CMakeFiles/test01.dir/tests_q1.cpp.o
+test01: CMakeFiles/test01.dir/question2.cpp.o
 test01: CMakeFiles/test01.dir/build.make
 test01: CMakeFiles/test01.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable test01"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable test01"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test01.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

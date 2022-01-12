@@ -1,30 +1,110 @@
-#include "Matrice.h"
+//-------------------------------------------------------------------------
+//
+// Classe Matrix (.cpp)
+//
+//-------------------------------------------------------------------------
+
+#include "Matrix.h"
 #include <iostream>
 #include <vector>
 #include <cmath>
+#include <fstream>
 
-Matrice::Matrice(){}
+// constructeurs :
+Matrix::Matrix(){}
+Matrix::Matrix(const int &l, const int &c, const std::vector<std::vector<float> > &mat) : nb_lignes(l), nb_colonnes(c), val(mat){}
 
-Matrice::Matrice(const int &l, const int &c, const std::vector<std::vector<float> > &mat) : nb_lignes(l), nb_colonnes(c), val(mat){}
 
-Matrice::~Matrice(){}
+//destructeur :
+Matrix::~Matrix(){}
 
-void Matrice::setnb_lignes(int nb_lignes)
+
+// set attributs des matrices:
+void Matrix::setnb_lignes(int nb_lignes)
 {
     this->nb_lignes = nb_lignes; 
 }
 
-void Matrice::setnb_colonnes(int nb_colonnes)
+void Matrix::setnb_colonnes(int nb_colonnes)
 {
     this->nb_colonnes = nb_colonnes; 
 }
 
-void Matrice::setval(std::vector<std::vector<float> > val)
+void Matrix::setval(std::vector<std::vector<float> > val)
 {
     this->val = val; 
 }
 
-void Matrice::saisir()
+void Matrix::change_coeff(int i, int j, float new_coeff)
+{
+    val[i][j] = new_coeff;
+}
+
+void Matrix::change_ligne(int i, Matrix new_line) // new_line est un vecteur colonne
+                                                  // la numérotation commence toujours à 0
+{
+    for (int j=0; j<nb_colonnes; j++)
+    {
+        (*this).change_coeff(i, j, new_line.coeff(j, 0));
+    }
+}
+
+void Matrix::change_colonne(int j, Matrix new_column) // new_column est un vecteur colonne 
+                                                      // la numérotation commence toujours à 0
+{
+    for (int i=0; i<nb_colonnes; i++)
+    {
+        (*this).change_coeff(i, j, new_column.coeff(i, 0));
+    }
+}
+
+
+// getteurs:
+int Matrix::getnb_lignes()
+{
+    return nb_lignes;
+}
+
+int Matrix::getnb_colonnes()
+{
+    return nb_colonnes;
+}
+
+std::vector<std::vector<float> >  Matrix::getval()
+{
+    return val;
+}
+
+float Matrix::coeff(int i, int j)
+{
+    return val[i][j];
+}
+
+Matrix Matrix::ligne(int i) //retourne un vecteur colonne 
+{
+    Matrix ligne;
+    ligne.nb_lignes = nb_colonnes;
+    ligne.nb_colonnes = 1;
+    for (int j=0; j<nb_colonnes; j++)
+    {
+        std::vector<float> coeff;
+        coeff.clear();
+        coeff.push_back(val[i][j]);
+        (ligne.val).push_back(coeff);
+    }
+    return ligne;
+}
+
+Matrix Matrix::colonne(int j) //retourne un vecteur colonne
+{
+    Matrix colonne;
+    colonne = ((*this).T()).ligne(j);
+    return colonne;
+}
+
+
+// fonctions de saisie et d'affichage :
+void Matrix::saisir()
 {
     float coeff;
 
@@ -45,7 +125,7 @@ void Matrice::saisir()
     }
 }
 
-void Matrice::afficher()
+void Matrix::afficher()
 {
     for (int i=0; i<nb_lignes; i++)
     {
@@ -58,7 +138,9 @@ void Matrice::afficher()
     }
 }
 
-Matrice Matrice::matrice_nulle(int taille_y, int taille_x)
+
+//initialisation de matrices particulières:
+Matrix Matrix::matrice_nulle(int taille_y, int taille_x)
 {
     std::vector<float> ligne;
     std::vector<std::vector<float> > mat;
@@ -75,14 +157,14 @@ Matrice Matrice::matrice_nulle(int taille_y, int taille_x)
         mat.push_back(ligne);
     }
 
-    Matrice Mat_nulle(taille_y, taille_x, mat);
+    Matrix Mat_nulle(taille_y, taille_x, mat);
     return Mat_nulle;
 }
 
-Matrice Matrice::matrice_identite(int taille)
+Matrix Matrix::matrice_identite(int taille)
 {
-    Matrice identite;
-    identite = Matrice::matrice_nulle(taille, taille);
+    Matrix identite;
+    identite = Matrix::matrice_nulle(taille, taille);
     
     for(int i=0; i<taille; i++)
     {
@@ -91,12 +173,14 @@ Matrice Matrice::matrice_identite(int taille)
     return identite;
 }
 
-Matrice Matrice::operator+(const Matrice &M)
+
+//opérations sur les matrices:
+Matrix Matrix::operator+(const Matrix &M)
 {
     if  (M.nb_lignes == nb_lignes && M.nb_colonnes == nb_colonnes) 
     {
-        Matrice Somme;
-        Somme = Matrice::matrice_nulle(nb_lignes, nb_colonnes);
+        Matrix Somme;
+        Somme = Matrix::matrice_nulle(nb_lignes, nb_colonnes);
 
         for(int i=0; i<nb_lignes; i++)
         {
@@ -111,12 +195,12 @@ Matrice Matrice::operator+(const Matrice &M)
     return M;
 }
 
-Matrice Matrice::operator-(const Matrice &M)
+Matrix Matrix::operator-(const Matrix &M)
 {
     if  (M.nb_lignes == nb_lignes && M.nb_colonnes == nb_colonnes) 
     {
-        Matrice Diff;
-        Diff = Matrice::matrice_nulle(nb_lignes, nb_colonnes);
+        Matrix Diff;
+        Diff = Matrix::matrice_nulle(nb_lignes, nb_colonnes);
 
         for(int i=0; i<nb_lignes; i++)
         {
@@ -131,12 +215,12 @@ Matrice Matrice::operator-(const Matrice &M)
     return M;
 }
 
-Matrice Matrice::operator*(const Matrice &M)
+Matrix Matrix::operator*(const Matrix &M)
 {
     if  (M.nb_lignes == nb_colonnes) 
     {
-        Matrice Prod;
-        Prod = Matrice::matrice_nulle(nb_lignes, M.nb_colonnes);
+        Matrix Prod;
+        Prod = Matrix::matrice_nulle(nb_lignes, M.nb_colonnes);
         //Prod.afficher();
 
         for(int i=0; i<nb_lignes; i++)
@@ -156,10 +240,10 @@ Matrice Matrice::operator*(const Matrice &M)
     return M;
 }
 
-Matrice Matrice::operator*(const float &lambda)
+Matrix Matrix::operator*(const float &lambda)
 {
-    Matrice Res;
-    Res = Matrice::matrice_nulle(nb_lignes, nb_colonnes);
+    Matrix Res;
+    Res = Matrix::matrice_nulle(nb_lignes, nb_colonnes);
 
     for(int i=0; i<nb_lignes; i++)
     {
@@ -172,7 +256,7 @@ Matrice Matrice::operator*(const float &lambda)
 }
 
 
-void Matrice::operator=(const Matrice &M)
+void Matrix::operator=(const Matrix &M)
 {
     nb_lignes = M.nb_lignes;
     nb_colonnes = M.nb_colonnes;
@@ -180,10 +264,10 @@ void Matrice::operator=(const Matrice &M)
 
 }
 
-Matrice Matrice::operator^(const int &n)
+Matrix Matrix::operator^(const int &n)
 {
-    Matrice mat(nb_lignes, nb_colonnes, val);
-    Matrice Res;
+    Matrix mat(nb_lignes, nb_colonnes, val);
+    Matrix Res;
     Res = mat;
 
     for(int i=0; i<n; i++)
@@ -194,10 +278,10 @@ Matrice Matrice::operator^(const int &n)
     return Res;
 }
 
-Matrice Matrice::T()
+Matrix Matrix::T()
 {
-    Matrice transpose;
-    transpose = Matrice::matrice_nulle(nb_colonnes, nb_lignes);
+    Matrix transpose;
+    transpose = Matrix::matrice_nulle(nb_colonnes, nb_lignes);
     //transpose.afficher();
 
     for(int i=0; i<nb_lignes; i++)
@@ -210,7 +294,7 @@ Matrice Matrice::T()
     return transpose;
 }
 
-float Matrice::Trace()
+float Matrix::Trace()
 {
     if (nb_lignes == nb_colonnes)
     {
@@ -226,7 +310,23 @@ float Matrice::Trace()
     return 0;
 }
 
-float Matrice::norme()
+float Matrix::norme()
 {
     return sqrt(((*this).T()*(*this)).val[0][0]);
 }
+
+
+// écriture dans un fichier texte
+void Matrix::WriteToFile(const std::string &file_name) const
+    {
+        std::ofstream out(std::string("../data/") + file_name);
+
+        for (int i = 0; i < nb_lignes; i++)
+        {
+            for (int j = 0; j < nb_colonnes; j++)
+            {
+                out << val[i][j] << ";";
+            }
+            out << "\n";
+        }
+    }

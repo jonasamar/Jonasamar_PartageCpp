@@ -6,7 +6,17 @@
 },
 {
   "directory": "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build",
-  "command": "/usr/bin/clang++   -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -o CMakeFiles/test01.dir/Matrice.cpp.o -c /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrice.cpp",
-  "file": "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrice.cpp"
+  "command": "/usr/bin/clang++   -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -o CMakeFiles/test01.dir/Matrix.cpp.o -c /Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrix.cpp",
+  "file": "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/Matrix.cpp"
+},
+{
+  "directory": "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -o CMakeFiles/test01.dir/tests_q1.cpp.o -c /Users/jonasamar/Jonasamar_PartageCpp/Matrices/tests_q1.cpp",
+  "file": "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/tests_q1.cpp"
+},
+{
+  "directory": "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build",
+  "command": "/usr/bin/clang++   -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -o CMakeFiles/test01.dir/question2.cpp.o -c /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.cpp",
+  "file": "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.cpp"
 }
 ]
