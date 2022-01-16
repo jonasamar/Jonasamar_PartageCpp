@@ -1,10 +1,9 @@
 //-------------------------------------------------------------------------
 //
-// question 2 : Euler explicit
+// question 4 : Euler implicite
 //
 //-------------------------------------------------------------------------
 
 #include "Matrix.h"
 
-Matrix d(int N, char * mode);
-Matrix Euler_explicite(float dx, float dt, float tf, float L, char * mode);
+Matrix Euler_implicite(float dx, float dt, float tf, float L, char * mode);

@@ -1,10 +1,9 @@
 //-------------------------------------------------------------------------
 //
-// question 2 : Euler explicit
+// question 3 : Choix du pivot de Gauss pour résoudre Ax = b
 //
 //-------------------------------------------------------------------------
 
 #include "Matrix.h"
 
-Matrix d(int N, char * mode);
-Matrix Euler_explicite(float dx, float dt, float tf, float L, char * mode);
+Matrix Pivot_Gauss(Matrix A, Matrix b);

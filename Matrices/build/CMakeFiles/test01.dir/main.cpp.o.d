@@ -228,4 +228,6 @@ CMakeFiles/test01.dir/main.cpp.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/vector \
   /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/usr/include/c++/v1/__split_buffer \
   /Users/jonasamar/Jonasamar_PartageCpp/Matrices/tests_q1.h \
-  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.h
+  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question2.h \
+  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question3.h \
+  /Users/jonasamar/Jonasamar_PartageCpp/Matrices/question4.h

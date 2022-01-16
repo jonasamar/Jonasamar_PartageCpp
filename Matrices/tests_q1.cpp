@@ -12,6 +12,7 @@
 void tests_q1()
 {
     Matrix A, B, ligne, colonne;
+    float lambda;
     std::cout << "Matrix A" << std::endl;
     A.saisir();
     std::cout << "Matrix B" << std::endl;
@@ -28,8 +29,9 @@ void tests_q1()
     (A-B).afficher();
     std::cout << "produit = "<< std::endl;
     (A*B).afficher();
-    std::cout << "5A = " << std::endl;
-    (A*5).afficher();
+    std::cout<<"valeur de lambda : "; std::cin >> lambda;
+    std::cout << lambda << "A = " << std::endl;
+    (A*lambda).afficher();
     std::cout << "1ere ligne de A = " << std::endl;
     (A.ligne(1)).afficher();
     std::cout << "0eme colonne de B = " << std::endl;

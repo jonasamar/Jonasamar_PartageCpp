@@ -45,7 +45,6 @@ void Matrix::change_ligne(int i, Matrix new_line) // new_line est un vecteur col
 {
     for (int j=0; j<nb_colonnes; j++)
     {
-        //std::cout << j << " passages dans la boucle cl"<<std::endl;
         (*this).change_coeff(i, j, new_line.coeff(j, 0));
     }
 }
@@ -55,7 +54,6 @@ void Matrix::change_colonne(int j, Matrix new_column) // new_column est un vecte
 {
     for (int i=0; i<nb_lignes; i++)
     {
-        //std::cout << i << " passages dans la boucle cl"<<std::endl;
         (*this).change_coeff(i, j, new_column.coeff(i, 0));
     }
 }
@@ -142,7 +140,7 @@ void Matrix::afficher()
 
 
 //initialisation de matrices particulières:
-Matrix Matrix::matrice_nulle(int taille_y, int taille_x)
+Matrix Matrix::nulle(int taille_y, int taille_x)
 {
     std::vector<float> ligne;
     std::vector<std::vector<float> > mat;
@@ -163,16 +161,30 @@ Matrix Matrix::matrice_nulle(int taille_y, int taille_x)
     return Mat_nulle;
 }
 
-Matrix Matrix::matrice_identite(int taille)
+Matrix Matrix::identite(int taille)
 {
     Matrix identite;
-    identite = Matrix::matrice_nulle(taille, taille);
+    identite = Matrix::nulle(taille, taille);
     
     for(int i=0; i<taille; i++)
     {
         identite.val[i][i] = 1.0;
     }
     return identite;
+}
+
+Matrix Matrix::graduation(float pas, float min, float max) //retourne un vecteur colonne
+{
+    Matrix ax;
+    int N = int((max-min)/pas) + 1; //il faut que x(N - 1) = (N - 1)*pas + min <= max < N*pas + min
+    ax = Matrix::nulle(N, 1);
+    for (int i=0; i<N - 1; i++)
+    {
+        ax.change_coeff(i, 0, i*pas + min);
+    }
+    ax.change_coeff(N -1, 0, max);
+
+    return ax;
 }
 
 
@@ -182,7 +194,7 @@ Matrix Matrix::operator+(const Matrix &M)
     if  (M.nb_lignes == nb_lignes && M.nb_colonnes == nb_colonnes) 
     {
         Matrix Somme;
-        Somme = Matrix::matrice_nulle(nb_lignes, nb_colonnes);
+        Somme = Matrix::nulle(nb_lignes, nb_colonnes);
 
         for(int i=0; i<nb_lignes; i++)
         {
@@ -193,7 +205,7 @@ Matrix Matrix::operator+(const Matrix &M)
         }
            return Somme;
     }
-    std::cout << " Impossible (la matrice retournée par défaut est la matrice de gauche)" << std::endl ;
+    std::cout << " Impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
     return M;
 }
 
@@ -202,7 +214,7 @@ Matrix Matrix::operator-(const Matrix &M)
     if  (M.nb_lignes == nb_lignes && M.nb_colonnes == nb_colonnes) 
     {
         Matrix Diff;
-        Diff = Matrix::matrice_nulle(nb_lignes, nb_colonnes);
+        Diff = Matrix::nulle(nb_lignes, nb_colonnes);
 
         for(int i=0; i<nb_lignes; i++)
         {
@@ -213,7 +225,7 @@ Matrix Matrix::operator-(const Matrix &M)
         }
            return Diff;
     }
-    std::cout << " Impossible (la matrice retournée par défaut est la matrice de gauche)" << std::endl ;
+    std::cout << " Impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
     return M;
 }
 
@@ -222,8 +234,7 @@ Matrix Matrix::operator*(const Matrix &M)
     if  (M.nb_lignes == nb_colonnes) 
     {
         Matrix Prod;
-        Prod = Matrix::matrice_nulle(nb_lignes, M.nb_colonnes);
-        //Prod.afficher();
+        Prod = Matrix::nulle(nb_lignes, M.nb_colonnes);
 
         for(int i=0; i<nb_lignes; i++)
         {
@@ -233,19 +244,18 @@ Matrix Matrix::operator*(const Matrix &M)
                 {
                     Prod.val[i][j] = Prod.val[i][j] + val[i][k]*M.val[k][j];
                 }
-                //std::cout<<Prod.val[i][j]<<std::endl;
             }
         }
            return Prod;
     }
-    std::cout << " Impossible (la matrice retournée par défaut est la matrice de gauche)" << std::endl ;
+    std::cout << " Impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
     return M;
 }
 
 Matrix Matrix::operator*(const float &lambda)
 {
     Matrix Res;
-    Res = Matrix::matrice_nulle(nb_lignes, nb_colonnes);
+    Res = Matrix::nulle(nb_lignes, nb_colonnes);
 
     for(int i=0; i<nb_lignes; i++)
     {
@@ -283,8 +293,7 @@ Matrix Matrix::operator^(const int &n)
 Matrix Matrix::T()
 {
     Matrix transpose;
-    transpose = Matrix::matrice_nulle(nb_colonnes, nb_lignes);
-    //transpose.afficher();
+    transpose = Matrix::nulle(nb_colonnes, nb_lignes);
 
     for(int i=0; i<nb_lignes; i++)
     {

@@ -595,6 +595,54 @@ question2.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question2.cpp.s
 .PHONY : question2.cpp.s
 
+question3.o: question3.cpp.o
+.PHONY : question3.o
+
+# target to build an object file
+question3.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question3.cpp.o
+.PHONY : question3.cpp.o
+
+question3.i: question3.cpp.i
+.PHONY : question3.i
+
+# target to preprocess a source file
+question3.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question3.cpp.i
+.PHONY : question3.cpp.i
+
+question3.s: question3.cpp.s
+.PHONY : question3.s
+
+# target to generate assembly for a file
+question3.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question3.cpp.s
+.PHONY : question3.cpp.s
+
+question4.o: question4.cpp.o
+.PHONY : question4.o
+
+# target to build an object file
+question4.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question4.cpp.o
+.PHONY : question4.cpp.o
+
+question4.i: question4.cpp.i
+.PHONY : question4.i
+
+# target to preprocess a source file
+question4.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question4.cpp.i
+.PHONY : question4.cpp.i
+
+question4.s: question4.cpp.s
+.PHONY : question4.s
+
+# target to generate assembly for a file
+question4.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/question4.cpp.s
+.PHONY : question4.cpp.s
+
 tests_q1.o: tests_q1.cpp.o
 .PHONY : tests_q1.o
 
@@ -668,6 +716,12 @@ help:
 	@echo "... question2.o"
 	@echo "... question2.i"
 	@echo "... question2.s"
+	@echo "... question3.o"
+	@echo "... question3.i"
+	@echo "... question3.s"
+	@echo "... question4.o"
+	@echo "... question4.i"
+	@echo "... question4.s"
 	@echo "... tests_q1.o"
 	@echo "... tests_q1.i"
 	@echo "... tests_q1.s"

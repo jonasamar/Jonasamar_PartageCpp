@@ -45,8 +45,10 @@ public:
     void afficher();
 
     // initialisation de matrices particulières
-    static Matrix matrice_nulle(int taille_y, int taille_x); 
-    static Matrix matrice_identite(int taille);
+    static Matrix nulle(int taille_y, int taille_x); 
+    static Matrix identite(int taille);
+    static Matrix graduation(float pas, float min, float max);//fonction qui permet la création d'un vecteur colonne 
+                                                              //contenant des valeurs à pas régulier entre min et max
 
     // operations sur les matrices
     void operator=(const Matrix &M); //affectation
