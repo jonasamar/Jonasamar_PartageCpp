@@ -1,15 +1,7 @@
-//-------------------------------------------------------------------------
-//
-// Aucun des tests réalisés pour représenter T(x,t) n'a été satisfaisant 
-// en raison de la possible erreur dans le sujet (ou mauvaise compréhension
-// de ma part) que j'expose dans la fonction Euler_explicite (question2)
-//
-//-------------------------------------------------------------------------
-
-#include "Matrix.h"
 #include <iostream>
 #include <cstring>
 #include <chrono>
+#include "Matrix.h"
 #include "tests_q1.h"
 #include "question2.h"
 #include "question3.h"
@@ -18,6 +10,9 @@
 int main() 
 {
     char rep[3];
+    std::string non = "non";
+
+    strcpy(rep, non.c_str());
 
     //question 1
     std::cout << "Voulez-vous tester les opérations de la classe Matrix ? (oui/non) : "; std::cin >> rep;
@@ -25,6 +20,8 @@ int main()
     {
         tests_q1();
     }
+
+    strcpy(rep, non.c_str());
 
     std::cout<<""<<std::endl;
     std::cout<<""<<std::endl;
@@ -67,6 +64,8 @@ int main()
         T.WriteToFile(file_name + methode);
     }
 
+    strcpy(rep, non.c_str());
+
     std::cout<<""<<std::endl;
     std::cout<<""<<std::endl;
 
@@ -88,6 +87,8 @@ int main()
         std::cout << "et b = " <<std::endl;
         b.afficher();
     }
+
+    strcpy(rep, non.c_str());
 
     std::cout<<""<<std::endl;
     std::cout<<""<<std::endl;
@@ -130,6 +131,8 @@ int main()
         T.WriteToFile(file_name + methode);
     }
 
+    strcpy(rep, non.c_str());
+
     std::cout<<""<<std::endl;
     std::cout<<""<<std::endl;
 
@@ -166,19 +169,22 @@ int main()
 
         std::cout << "Pas d'espace, dx = "; std::cin >> dx;
         std::cout << "Pas temporel, dt = "; std::cin >> dt;
-        auto start1 = std::chrono::high_resolution_clock::now();
+        std::chrono::time_point<std::chrono::system_clock> start1 = std::chrono::system_clock::now();
         Euler_implicite(dx, dt, tf, L, rep);
-        auto stop1 = std::chrono::high_resolution_clock::now();
-        auto start2 = std::chrono::high_resolution_clock::now();
+        std::chrono::time_point<std::chrono::system_clock> stop1 = std::chrono::system_clock::now();
+        std::chrono::time_point<std::chrono::system_clock> start2 = std::chrono::system_clock::now();
         Euler_explicite(dx, dt, tf, L, rep);
-        auto stop2 = std::chrono::high_resolution_clock::now();
-        auto duration1 = std::chrono::duration_cast<std::chrono::seconds>(stop1 - start1);
-        auto duration2 = std::chrono::duration_cast<std::chrono::seconds>(stop2 - start2);
+        std::chrono::time_point<std::chrono::system_clock> stop2 = std::chrono::system_clock::now();
+        int duration1 = std::chrono::duration_cast<std::chrono::seconds>(stop1 - start1).count();
+        int duration2 = std::chrono::duration_cast<std::chrono::seconds>(stop2 - start2).count();
 
+        std::cout<<""<<std::endl;
         std::cout << "Temps d'execution : "<<std::endl;
-        std::cout << " -> Euler implicite : "<< duration1.count() << "s"<<std::endl;
-        std::cout << " -> Euler explicite : "<< duration2.count() << "s"<<std::endl;
+        std::cout << " -> Euler implicite : "<< duration1 << "s"<<std::endl;
+        std::cout << " -> Euler explicite : "<< duration2 << "s"<<std::endl;
     }
+
+    strcpy(rep, non.c_str());
 
     return 0;
 }

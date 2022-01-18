@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=test01
+CMAKE_PROJECT_NAME:STATIC=snake
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1.0
@@ -311,6 +311,15 @@ MEMORYCHECK_SUPPRESSIONS_FILE:FILEPATH=
 
 //Name of the computer/site where compile is being run
 SITE:STRING=MacBook-Air-de-Jonas-5001.local
+
+//Value Computed by CMake
+snake_BINARY_DIR:STATIC=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build
+
+//Value Computed by CMake
+snake_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+snake_SOURCE_DIR:STATIC=/Users/jonasamar/Jonasamar_PartageCpp/Matrices
 
 //Value Computed by CMake
 test01_BINARY_DIR:STATIC=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build

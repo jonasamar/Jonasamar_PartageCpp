@@ -32,7 +32,7 @@ Matrix Euler_implicite(float dx, float dt, float tf, float L, char * mode)
 
     //création de la matrice K
     Matrix K, D;
-    D = d(N_x, mode);
+    D = d(N_x + 1, mode); // (N_x - 1) + 1 doit être défini
     K = Matrix::nulle(N_x, N_x);
     for (int i=0; i<N_x; i++)
     {
@@ -40,15 +40,15 @@ Matrix Euler_implicite(float dx, float dt, float tf, float L, char * mode)
         {
             if (j == i - 1)
             {
-                K.change_coeff(i, j, D.coeff(i, 0)); 
+                K.change_coeff(i, j, D.coeff(i, 0)/(dx*dx)); 
             }
-            if (j == i && i + 1 < N_x) // (N_x - 1) + 1 sort de la taille de D...
+            if (j == i) 
             {
-                K.change_coeff(i, j, - D.coeff(i, 0) - D.coeff(i+1, 0)); 
+                K.change_coeff(i, j, (- D.coeff(i, 0) - D.coeff(i+1, 0))/(dx*dx)); 
             }
-            if (j == i + 1 && i + 1 < N_x) // (N_x - 1) + 1 sort de la taille de D...
+            if (j == i + 1)
             {
-                K.change_coeff(i, j, D.coeff(i + 1, 0));
+                K.change_coeff(i, j, D.coeff(i + 1, 0)/(dx*dx));
             }
         }
     }
@@ -56,7 +56,7 @@ Matrix Euler_implicite(float dx, float dt, float tf, float L, char * mode)
     //Euler implicite
     for (int k=0; k<N_tps - 1; k++) //il faut qu'au dernier passage k+1 = N_tps - 1
     {
-        T.change_colonne(k+1, Pivot_Gauss(Matrix::identite(N_x) + K*dt, T.colonne(k)));// même remarque que dans Euler explicite
+        T.change_colonne(k+1, Pivot_Gauss(Matrix::identite(N_x) - K*dt, T.colonne(k)));
         T.change_coeff(0, k+1, 0.); // T(0, t) = 0
         T.change_coeff(N_x - 1, k+1, 0.); // T(L, t) = 0
     }

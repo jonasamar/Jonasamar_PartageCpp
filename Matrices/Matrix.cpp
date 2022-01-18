@@ -11,12 +11,12 @@
 #include <fstream>
 
 // constructeurs :
-Matrix::Matrix(){}
-Matrix::Matrix(const int &l, const int &c, const std::vector<std::vector<float> > &mat) : nb_lignes(l), nb_colonnes(c), val(mat){}
+Matrix::Matrix(){};
+Matrix::Matrix(const int &l, const int &c, const std::vector<std::vector<float> > &mat) : nb_lignes(l), nb_colonnes(c), val(mat){};
 
 
 //destructeur :
-Matrix::~Matrix(){}
+Matrix::~Matrix(){};
 
 
 // set attributs des matrices:
