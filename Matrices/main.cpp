@@ -110,6 +110,7 @@ int main()
         //question 3
         if (choix == 2)
         {
+            system("clear");
             std::cout << "Test de la fonction Pivot de Gauss (Résolution de Ax = b)"<<std::endl;
             std::cout<<""<<std::endl;
 
@@ -141,6 +142,7 @@ int main()
         //question 4 et bonnus 1
         if (choix == 4)
         {
+            system("clear");
             std::cout << "Création d'un nouveau fichier des températures calculées avec Euler implicite"; std::cin >> rep;
             std::cout<<""<<std::endl;
 
@@ -191,9 +193,9 @@ int main()
         }
 
         //question bonnus 2 (début...)
-        if (std::string(rep) == "oui")
+        if (choix == 5)
         {
-            
+            system("clear");
             std::cout << "Comparaison du temps d'execution de Euler explicite et Euler implicite"<<std::endl;
             std::cout<<""<<std::endl;
 

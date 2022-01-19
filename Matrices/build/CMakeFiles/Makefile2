@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /Users/jonasamar/Jonasamar_PartageCpp/Matrices/build
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/matt.dir/all
+all: CMakeFiles/test01.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,9 +71,9 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/test01.dir/clean
 clean: CMakeFiles/ContinuousCoverage.dir/clean
 clean: CMakeFiles/ContinuousTest.dir/clean
-clean: CMakeFiles/matt.dir/clean
 clean: CMakeFiles/ContinuousBuild.dir/clean
 clean: CMakeFiles/ContinuousStart.dir/clean
 clean: CMakeFiles/ExperimentalBuild.dir/clean
@@ -101,6 +101,32 @@ clean: CMakeFiles/ExperimentalMemCheck.dir/clean
 clean: CMakeFiles/Continuous.dir/clean
 clean: CMakeFiles/Experimental.dir/clean
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test01.dir
+
+# All Build rule for target.
+CMakeFiles/test01.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target test01"
+.PHONY : CMakeFiles/test01.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test01.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles 7
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test01.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles 0
+.PHONY : CMakeFiles/test01.dir/rule
+
+# Convenience name for target.
+test01: CMakeFiles/test01.dir/rule
+.PHONY : test01
+
+# clean rule for target.
+CMakeFiles/test01.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test01.dir/build.make CMakeFiles/test01.dir/clean
+.PHONY : CMakeFiles/test01.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ContinuousCoverage.dir
@@ -153,32 +179,6 @@ ContinuousTest: CMakeFiles/ContinuousTest.dir/rule
 CMakeFiles/ContinuousTest.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ContinuousTest.dir/build.make CMakeFiles/ContinuousTest.dir/clean
 .PHONY : CMakeFiles/ContinuousTest.dir/clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/matt.dir
-
-# All Build rule for target.
-CMakeFiles/matt.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/matt.dir/build.make CMakeFiles/matt.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/matt.dir/build.make CMakeFiles/matt.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target matt"
-.PHONY : CMakeFiles/matt.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/matt.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles 7
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/matt.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonasamar/Jonasamar_PartageCpp/Matrices/build/CMakeFiles 0
-.PHONY : CMakeFiles/matt.dir/rule
-
-# Convenience name for target.
-matt: CMakeFiles/matt.dir/rule
-.PHONY : matt
-
-# clean rule for target.
-CMakeFiles/matt.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/matt.dir/build.make CMakeFiles/matt.dir/clean
-.PHONY : CMakeFiles/matt.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ContinuousBuild.dir

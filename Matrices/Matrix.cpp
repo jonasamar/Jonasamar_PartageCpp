@@ -102,10 +102,7 @@ Matrix Matrix::ligne(int i) //retourne un vecteur colonne
     {
         for (int j=0; j<nb_colonnes; j++)
         {
-            std::vector<float> coeff;
-            coeff.clear();
-            coeff.push_back(val[i][j]);
-            (ligne.val).push_back(coeff);
+            ligne.change_coeff(j, 0, val[i][j]);
         }
     }
     else
