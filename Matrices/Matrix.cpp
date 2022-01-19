@@ -43,18 +43,32 @@ void Matrix::change_coeff(int i, int j, float new_coeff)
 void Matrix::change_ligne(int i, Matrix new_line) // new_line est un vecteur colonne
                                                   // la numérotation commence toujours à 0
 {
-    for (int j=0; j<nb_colonnes; j++)
+    if (i<nb_lignes)
     {
-        (*this).change_coeff(i, j, new_line.coeff(j, 0));
+        for (int j=0; j<nb_colonnes; j++)
+        {
+            (*this).change_coeff(i, j, new_line.coeff(j, 0));
+        }
+    }
+    else
+    {
+        std::cout<<"La ligne "<<i<<" de la matrice n'exite pas (aucune modification réalisée)"<<std::endl;
     }
 }
 
 void Matrix::change_colonne(int j, Matrix new_column) // new_column est un vecteur colonne 
                                                       // la numérotation commence toujours à 0
 {
-    for (int i=0; i<nb_lignes; i++)
+    if (j<nb_colonnes)
     {
-        (*this).change_coeff(i, j, new_column.coeff(i, 0));
+        for (int i=0; i<nb_lignes; i++)
+        {
+            (*this).change_coeff(i, j, new_column.coeff(i, 0));
+        }
+    }
+    else
+    {
+        std::cout<<"La ligne "<<j<<" de la matrice n'exite pas (aucune modification réalisée)"<<std::endl;
     }
 }
 
@@ -83,14 +97,20 @@ float Matrix::coeff(int i, int j)
 Matrix Matrix::ligne(int i) //retourne un vecteur colonne 
 {
     Matrix ligne;
-    ligne.nb_lignes = nb_colonnes;
-    ligne.nb_colonnes = 1;
-    for (int j=0; j<nb_colonnes; j++)
+    ligne = Matrix::nulle(nb_colonnes, 1);
+    if (i<nb_lignes)
     {
-        std::vector<float> coeff;
-        coeff.clear();
-        coeff.push_back(val[i][j]);
-        (ligne.val).push_back(coeff);
+        for (int j=0; j<nb_colonnes; j++)
+        {
+            std::vector<float> coeff;
+            coeff.clear();
+            coeff.push_back(val[i][j]);
+            (ligne.val).push_back(coeff);
+        }
+    }
+    else
+    {
+        std::cout<<"La ligne (ou colonne) "<<i<<" de la matrice considérée n'existe pas (colonne de 0 retourné par défaut)"<<std::endl;
     }
     return ligne;
 }

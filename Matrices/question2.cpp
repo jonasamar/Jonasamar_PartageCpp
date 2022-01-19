@@ -42,7 +42,7 @@ Matrix Euler_explicite(float dx, float dt, float tf, float L, char * mode)
     //discrétisation spatiale
     Matrix x;
     x = Matrix::graduation(dx, 0., L);
-    int N_x = int(L/dx) + 1;
+    int N_x = x.getnb_lignes();
 
     //discrétisation temporelle
     int N_tps = int(tf/dt) + 1; //il faut que t(N_tps - 1) = (N_tps - 1)dt <= tf < (N_tps)dt
@@ -85,7 +85,6 @@ Matrix Euler_explicite(float dx, float dt, float tf, float L, char * mode)
         T.change_colonne(k+1, T.colonne(k) + K*T.colonne(k)*(dt));
         T.change_coeff(0, k+1, 0.); // T(0, t) = 0
         T.change_coeff(N_x - 1, k+1, 0.); // T(L, t) = 0
-        //std::cout << T.coeff(5,k) << std::endl;
     }
     return T;
 }

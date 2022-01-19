@@ -35,13 +35,9 @@ Matrix Pivot_Gauss(Matrix A, Matrix b) //on travaille ici avec des copies de A e
         M.change_ligne(j, M.ligne(i));
         M.change_ligne(i, ligne_j);
 
-        //M.afficher();
-
         //on normalise la ligne i par rapport au coefficient (i,i) 
         //et on annule tous les autres coefficients de la colonne i de la matrice M
         M.change_ligne(i, M.ligne(i)*(1/M.coeff(i,i)));
-
-        //M.afficher();
 
         for (int k=0; k<n;  k++)
         {
