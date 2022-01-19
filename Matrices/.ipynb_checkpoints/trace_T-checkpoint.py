@@ -1,22 +1,24 @@
 # -*- coding: utf-8 -*-
-##-------------------------------------------------------------------------
-##
-## question 2 : tracer l'évolution de la température en fonction de x et t
-##              * Avec Euler explicite, pour les pas de temps et d'espace , 
-##              j'ai réaliser un grand nombre de tests et finalement opté 
-##              pour dt = 0.0005 et dx = 0.01
-##              * Avec Euler implicite, pour les pas de temps et d'espace , 
-##              j'ai opté pour dt = 0.0005 et dx = 0.01
-##              
-##-------------------------------------------------------------------------
+# #-------------------------------------------------------------------------
+# #
+# # question 2 : tracer l'évolution de la température en fonction de x et t
+# #              * Condition pour choix de dt et dx : dt/(dx^2) < 1
+# #              * j'ai pris pour le sets de data créés : 
+# #                  -> dx = 0.05
+# #                  -> dt = 0.0001
+# #              * On remarque que l'utilisation de coefficients randoms ne 
+# #                semble pas affecter l'allure globale de l'évolution de la 
+# #                chaleur.
+# #              
+# #-------------------------------------------------------------------------
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
-import os
 
 ## écrire l'adresse du fichier data_used.txt avant de lancer le programme 
-file_adress_Euler_implicite = "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/data/rd_test2_Euler_implicite.txt" 
-file_adress_Euler_explicite = "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/data/rd_test2_Euler_explicite.txt" 
+file_adress_Euler_implicite = "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/data/D_cst_Euler_implicite.txt" 
+file_adress_Euler_explicite = "/Users/jonasamar/Jonasamar_PartageCpp/Matrices/data/D_cst_Euler_explicite.txt" 
 t_f = 0.05
 
 def trace_T(file_adress, tf = 0.05):

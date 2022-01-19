@@ -226,7 +226,8 @@ int main()
                 std::string cst = "cst";
                 strcpy(rep, cst.c_str()); // rep = "cst"
             }
-
+            
+            std::cout<<""<<std::endl;
             std::cout << "Pas d'espace, dx = "; std::cin >> dx;
             std::cout << "Pas temporel, dt = "; std::cin >> dt;
             std::cout<<""<<std::endl;
