@@ -7,6 +7,7 @@
 //-------------------------------------------------------------------------
 
 #include "Matrix_creux.h"
+#include "Matrix.h"
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -70,7 +71,7 @@ void Matrix_creux::change_coeff(int i, int j, float new_coeff)
     }
     if (i>= nb_lignes || j >= nb_colonnes)
     {
-        std::cout<<"("<<i<<","<<j<<") sort de la taille de la matrice (aucun coefficient de la matrice n'a été modifié"<<std::endl;
+        std::cout<<"("<<i<<","<<j<<") sort de la taille de la matrice (aucun coefficient de la matrice n'a été modifié)"<<std::endl;
     }
 }
 
@@ -204,7 +205,7 @@ void Matrix_creux::afficher()
         std::cout<<"|";
         for (int j=0; j<nb_colonnes; j++)
         {
-            std::cout<<" "<<(*this).coeff(i,j)<<" ";
+            std::cout<<" "<<round(100*(*this).coeff(i,j))/100<<" ";
         }
         std::cout<<"|"<<std::endl;
     }
@@ -241,6 +242,8 @@ Matrix_creux Matrix_creux::identite(int taille)
     return identite;
 }
 
+// Pas très utile car la classe Matrix permet d'utiliser cette fonction 
+// et le vecteur retourné contient au plus 1 zero
 Matrix_creux Matrix_creux::graduation(float pas, float min, float max) //retourne un vecteur colonne
 {
     Matrix_creux ax;
@@ -280,7 +283,7 @@ Matrix_creux Matrix_creux::operator+(const Matrix_creux &M)
         }
            return Somme;
     }
-    std::cout << " Impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
+    std::cout << " Somme impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
     return M;
 }
 
@@ -307,7 +310,7 @@ Matrix_creux Matrix_creux::operator-(const Matrix_creux &M)
         }
            return Diff;
     }
-    std::cout << " Impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
+    std::cout << "Différence impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
     return M;
 }
 
@@ -318,22 +321,24 @@ Matrix_creux Matrix_creux::operator*(const Matrix_creux &M)
         Matrix_creux Prod;
         Prod = Matrix_creux::nulle(nb_lignes, M.nb_colonnes);
 
-        
         for (int k=0; k<I.size(); k++)
         {
-            for (int l=0; k<(M.I).size(); l++)
+            for (int l=0; l<(M.I).size(); l++)
             {
-                if (I[k] == (M.J)[l] && (M.I)[l] == J[k])
+                if ((M.I)[l] == J[k])
                 {
-                    Prod.change_coeff(I[k],(M.J)[l], Prod.coeff(I[k],(M.J)[l]) + val[k]*((M.val)[l])); 
+                    Prod.change_coeff(I[k],(M.J)[l], Prod.coeff(I[k],(M.J)[l]) + val[k]*((M.val)[l]));
                 }
             }
         }
         
         return Prod;
     }
-    std::cout << " Impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
-    return M;
+    else
+    {
+        std::cout << " Produit impossible (la matrice retournée par défaut est la matrice de droite)" << std::endl ;
+        return M;
+    }
 }
 
 Matrix_creux Matrix_creux::operator*(const float &lambda)
@@ -360,8 +365,10 @@ void Matrix_creux::operator=(const Matrix_creux &M)
 Matrix_creux Matrix_creux::T()
 {
     Matrix_creux transpose = *this;
-    transpose.I = J;
-    transpose.J = I;
+    transpose.setI(J);
+    transpose.setJ(I);
+    transpose.setnb_lignes(nb_colonnes);
+    transpose.setnb_colonnes(nb_lignes);
     return transpose;
 }
 
@@ -387,5 +394,18 @@ float Matrix_creux::Trace()
 float Matrix_creux::norme()
 {
     return sqrt(((*this).T()*(*this)).val[0]);
+}
+
+
+//convertire une Matrix et Matrix_creux
+Matrix Matrix_creux::convert_to_Matrix()
+{
+    Matrix convert;
+    convert = Matrix::nulle(nb_lignes, nb_colonnes);
+    for (int k=0; k<I.size(); k++)
+    {
+        convert.change_coeff(I[k], J[k], val[k]);
+    }
+    return convert;
 }
 

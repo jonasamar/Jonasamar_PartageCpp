@@ -44,7 +44,7 @@ int main()
             system("clear");
             std::cout << "Tests de la classe Matrix"<<std::endl;
             std::cout<<""<<std::endl;
-            std::cout<<"Quelle classe souhaitez-vous tester ?"<<std::endl;
+            std::cout<<"Quelle classe souhaitez-vous utiliser ?"<<std::endl;
             std::cout<<"    (1) Matrix"<<std::endl;
             std::cout<<"    (2) Matrix_creux"<<std::endl;
             std::cout<<""<<std::endl;
@@ -97,6 +97,7 @@ int main()
             std::cout<<" -> rdm : D(x) aléatoire entre 0.5 et 1.5"<<std::endl; 
             std::cout<<"mode : "; std::cin >> rep;
             std::cout<<""<<std::endl;
+
             if (std::string(rep) != "rdm" && std::string(rep) != "cst")
             {
                 std::cout << "Réponse non adaptée (mode par défaut cst)";
@@ -105,9 +106,23 @@ int main()
                 strcpy(rep, cst.c_str()); // rep = "cst"
             }
 
+            std::cout<<"Quelle classe souhaitez-vous utiliser ?"<<std::endl;
+            std::cout<<"    (1) Matrix"<<std::endl;
+            std::cout<<"    (2) Matrix_creux"<<std::endl;
+            std::cout<<""<<std::endl;
+            std::cout<<"    -> "; std::cin >> choix;
+            std::cout<<""<<std::endl;
+            
+            if (choix != 1 && choix != 2)
+            {
+                std::cout << "Réponse non adaptée (test par défaut : classe Matrix)";
+                choix = 1;
+                std::cout<<""<<std::endl;
+            }
+
             std::cout << "Pas d'espace, dx = "; std::cin >> dx;
             std::cout << "Pas temporel, dt = "; std::cin >> dt;
-            T = Euler_explicite(dx, dt, tf, L, rep);
+            T = Euler_explicite(dx, dt, tf, L, rep, choix);
             std::cout<<""<<std::endl;
             std::cout << "Nom du nouveau fichier créé : "; std::cin >> file_name;
             T.WriteToFile(file_name + methode);
@@ -205,7 +220,7 @@ int main()
             std::cout<<"    -> "; std::cin >> choix;   
         }
 
-        //question bonnus 2 (début...)
+        //question bonnus 2 (il manque l'utilisation de Matrix_creux pour Euler_implicite)
         if (choix == 5)
         {
             system("clear");
@@ -246,17 +261,23 @@ int main()
             std::cout<<""<<std::endl;
             std::cout << "Temps d'execution : "<<std::endl;
 
+            std::chrono::time_point<std::chrono::system_clock> start0 = std::chrono::system_clock::now();
+            Euler_explicite(dx, dt, tf, L, rep, 1);
+            std::chrono::time_point<std::chrono::system_clock> stop0 = std::chrono::system_clock::now();
+            int duration0 = std::chrono::duration_cast<std::chrono::seconds>(stop0 - start0).count();
+            std::cout << " -> Euler explicite (avec class Matrix): "<< duration0 << "s"<<std::endl;
+
             std::chrono::time_point<std::chrono::system_clock> start1 = std::chrono::system_clock::now();
-            Euler_explicite(dx, dt, tf, L, rep);
+            Euler_explicite(dx, dt, tf, L, rep, 2);
             std::chrono::time_point<std::chrono::system_clock> stop1 = std::chrono::system_clock::now();
             int duration1 = std::chrono::duration_cast<std::chrono::seconds>(stop1 - start1).count();
-            std::cout << " -> Euler explicite : "<< duration1 << "s"<<std::endl;
+            std::cout << " -> Euler explicite (avec class Matrix_creux): "<< duration1 << "s"<<std::endl;
 
             std::chrono::time_point<std::chrono::system_clock> start2 = std::chrono::system_clock::now();
             Euler_implicite(dx, dt, tf, L, rep);
             std::chrono::time_point<std::chrono::system_clock> stop2 = std::chrono::system_clock::now();
             int duration2 = std::chrono::duration_cast<std::chrono::seconds>(stop2 - start2).count();
-            std::cout << " -> Euler implicite : "<< duration1 << "s"<<std::endl;
+            std::cout << " -> Euler implicite : "<< duration2 << "s"<<std::endl;
 
             std::cout<<""<<std::endl;
             std::cout<<"Options"<<std::endl;

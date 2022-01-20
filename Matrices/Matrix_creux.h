@@ -9,6 +9,7 @@
  
 #include <iostream>
 #include <vector>
+#include "Matrix.h"
 
 class Matrix_creux
 {
@@ -66,6 +67,9 @@ public:
     Matrix_creux T(); //transposée
     float Trace(); //trace
     float norme(); //norme infinie
+
+    //convertire une Matrix et Matrix_creux
+    Matrix convert_to_Matrix();
 };
 
 
