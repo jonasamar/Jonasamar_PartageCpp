@@ -8,6 +8,7 @@
 #include <math.h>
 #include <iostream>
 #include <vector>
+#include <string>
 #include <cmath>
 #include <fstream>
 
@@ -362,3 +363,7 @@ void Matrix::WriteToFile(const std::string &file_name) const
             out << "\n";
         }
     }
+
+
+
+

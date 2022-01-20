@@ -63,6 +63,9 @@ public:
 
     // écriture dans un fichier texte
     void WriteToFile(const std::string &file_name) const;
+
+    //transcriptin d'un fichier texte en matrice
+    void FileToMatrix(const std::string &file_name, const int nb_lignes, const int nb_colonnes) const;
 };
 
 
