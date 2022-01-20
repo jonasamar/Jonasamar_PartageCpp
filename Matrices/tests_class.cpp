@@ -7,11 +7,19 @@
 
 #include <iostream>
 #include "Matrix.h"
-#include "tests_q1.h"
+#include "Matrix_creux.h"
+#include "tests_class.h"
 
-void tests_q1()
+void tests_class(int choix)
 {
-    Matrix A, B, ligne, colonne;
+    if (choix ==1)
+    {
+        Matrix A, B, ligne, colonne;
+    }
+    if (choix ==2) //je mets un if et non un else pour des éventuels ajouts de choix
+    {
+        Matrix_creux A, B, ligne, colonne;
+    }
     float lambda;
     std::cout << "Matrix A" << std::endl;
     A.saisir();
@@ -21,13 +29,15 @@ void tests_q1()
     A.afficher();
     std::cout << "B = " << std::endl;
     B.afficher();
+    std::cout << "Transposée de B = " << std::endl;
+    (B.T()).efficher();
     std::cout << "2A - B = " << std::endl;
     (A*2-B).afficher();
-    std::cout << "somme = " << std::endl;
+    std::cout << "A + B = " << std::endl;
     (A+B).afficher();
-    std::cout << "différence = " << std::endl;
+    std::cout << "A - B = " << std::endl;
     (A-B).afficher();
-    std::cout << "produit = "<< std::endl;
+    std::cout << "A*B = "<< std::endl;
     (A*B).afficher();
     std::cout<<"valeur de lambda : "; std::cin >> lambda;
     std::cout << lambda << "A = " << std::endl;

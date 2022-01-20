@@ -11,7 +11,7 @@
 #include <cstring>
 #include <chrono>
 #include "Matrix.h"
-#include "tests_q1.h"
+#include "tests_class.h"
 #include "question2.h"
 #include "question3.h"
 #include "question4.h"
@@ -44,8 +44,21 @@ int main()
             system("clear");
             std::cout << "Tests de la classe Matrix"<<std::endl;
             std::cout<<""<<std::endl;
+            std::cout<<"Quelle classe souhaitez-vous tester ?"<<std::endl;
+            std::cout<<"    (1) Matrix"<<std::endl;
+            std::cout<<"    (2) Matrix_creux"<<std::endl;
+            std::cout<<""<<std::endl;
+            std::cout<<"    -> "; std::cin >> choix;
+            std::cout<<""<<std::endl;
+            
+            if (choix != 1 && choix != 2)
+            {
+                std::cout << "Réponse non adaptée (test par défaut : classe Matrix)";
+                choix = 1;
+                std::cout<<""<<std::endl;
+            }
 
-            tests_q1();
+            tests_class(choix);
 
             std::cout<<""<<std::endl;
             std::cout<<"Options"<<std::endl;

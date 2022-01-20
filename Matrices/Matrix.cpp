@@ -5,6 +5,7 @@
 //-------------------------------------------------------------------------
 
 #include "Matrix.h"
+#include <math.h>
 #include <iostream>
 #include <vector>
 #include <cmath>
@@ -149,7 +150,7 @@ void Matrix::afficher()
         std::cout<<"|";
         for (int j=0; j<nb_colonnes; j++)
         {
-            std::cout<<" "<<val[i][j]<<" ";
+            std::cout<<" "<<round(val[i][j])<<" ";
         }
         std::cout<<"|"<<std::endl;
     }
@@ -355,8 +356,7 @@ void Matrix::WriteToFile(const std::string &file_name) const
             for (int j = 0; j < nb_colonnes; j++)
             {
                 out << val[i][j];
-                if (j < nb_colonnes -1) //permet d'éviter d'avoir la création d'une colonne de Nan 
-                                      //dans le tableau pandas associé au fichier (dans trace_T))
+                if (j < nb_colonnes -1) 
                 out << ";";
             }
             out << "\n";

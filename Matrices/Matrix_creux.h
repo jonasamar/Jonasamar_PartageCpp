@@ -33,42 +33,40 @@ public:
     void setI(std::vector<int> I);
     void setJ(std::vector<int> J);
     void change_coeff(int i, int j, float new_coeff); // modifie le coefficient i,j de la matrice par la valeur new_coeff
-    void change_colonne(int j, Matrix new_column); // modifie la colonne  j de la matrice par la colonne new_column
-    void change_ligne(int i, Matrix new_line); // modifie la ligne i de la matrice par la ligne new_line
+    void change_colonne(int j, Matrix_creux new_column); // modifie la colonne  j de la matrice par la colonne new_column
+    void change_ligne(int i, Matrix_creux new_line); // modifie la ligne i de la matrice par la ligne new_line
 
     // getteurs 
     int getnb_lignes();
     int getnb_colonnes();
-    std::vector<std::vector<float> >  getval();
+    std::vector<float>  getval();
+    std::vector<int>  getI();
+    std::vector<int>  getJ();
     float coeff(int i, int j); // donne la valeur du coefficient i,j de la matrice
-    Matrix ligne(int i); // permet de sélectionner la i-ieme ligne de la matrice (en commençant par la ligne 0)
-    Matrix colonne(int j); // permet de sélectionner la j-ieme colonne de la matrice (en commençant par la colonne 0)
+    Matrix_creux ligne(int i); // permet de sélectionner la i-ieme ligne de la matrice (en commençant par la ligne 0)
+    Matrix_creux colonne(int j); // permet de sélectionner la j-ieme colonne de la matrice (en commençant par la colonne 0)
 
     // fonctions d'affichage et de saisie
     void saisir();
     void afficher();
 
     // initialisation de matrices particulières
-    static Matrix nulle(int taille_y, int taille_x); 
-    static Matrix identite(int taille);
-    static Matrix graduation(float pas, float min, float max);//fonction qui permet la création d'un vecteur colonne 
-                                                              //contenant des valeurs à pas régulier entre min et max
+    static Matrix_creux nulle(int taille_y, int taille_x); 
+    static Matrix_creux identite(int taille);
+    static Matrix_creux graduation(float pas, float min, float max);//fonction qui permet la création d'un vecteur colonne 
+                                                                    //contenant des valeurs à pas régulier entre min et max
 
     // operations sur les matrices
-    void operator=(const Matrix &M); //affectation
-    Matrix operator+(const Matrix &M); //somme
-    Matrix operator-(const Matrix &M); //différence
-    Matrix operator*(const Matrix &M); //produit matriciel
-    Matrix operator*(const float &lambda); //produit par un scalaire
-    Matrix operator^(const int &n); //puissance n
-    Matrix T(); //transposée
+    void operator=(const Matrix_creux &M); //affectation
+    Matrix_creux operator+(const Matrix_creux &M); //somme
+    Matrix_creux operator-(const Matrix_creux &M); //différence
+    Matrix_creux operator*(const Matrix_creux &M); //produit matriciel
+    Matrix_creux operator*(const float &lambda); //produit par un scalaire
+    Matrix_creux operator^(const int &n); //puissance n
+    Matrix_creux T(); //transposée
     float Trace(); //trace
     float norme(); //norme infinie
-
-    // écriture dans un fichier texte
-    void WriteToFile(const std::string &file_name) const;
 };
-
 
 
 #endif
