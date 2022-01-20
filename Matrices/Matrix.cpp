@@ -150,7 +150,7 @@ void Matrix::afficher()
         std::cout<<"|";
         for (int j=0; j<nb_colonnes; j++)
         {
-            std::cout<<" "<<round(val[i][j])<<" ";
+            std::cout<<" "<<val[i][j]<<" ";
         }
         std::cout<<"|"<<std::endl;
     }

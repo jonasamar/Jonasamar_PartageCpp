@@ -37,6 +37,16 @@ void Matrix_creux::setval(std::vector<float> val)
     this->val = val; 
 }
 
+void Matrix_creux::setI(std::vector<int> I)
+{
+    this->I = I; 
+}
+
+void Matrix_creux::setJ(std::vector<int> J)
+{
+    this->J = J; 
+}
+
 void Matrix_creux::change_coeff(int i, int j, float new_coeff)
 {
     int k=0;
@@ -118,7 +128,7 @@ std::vector<float>  Matrix_creux::getval()
 float Matrix_creux::coeff(int i, int j)
 {
     int k=0;
-    while (k<I.size() && (I[k] != i || J[k] != j))
+    while (k<I.size() && (I[k]!= i || J[k] != j))
     {
         k++;
     }
@@ -180,8 +190,8 @@ void Matrix_creux::saisir()
             if (coeff != 0)
             {
                 val.push_back(coeff);
-                I.push_back(i);
-                J.push_back(j);
+                I.push_back(i - 1);
+                J.push_back(j - 1);
             }
         }
     }
@@ -194,7 +204,7 @@ void Matrix_creux::afficher()
         std::cout<<"|";
         for (int j=0; j<nb_colonnes; j++)
         {
-            std::cout<<" "<<round((*this).coeff(i,j))<<" ";
+            std::cout<<" "<<(*this).coeff(i,j)<<" ";
         }
         std::cout<<"|"<<std::endl;
     }
@@ -238,9 +248,9 @@ Matrix_creux Matrix_creux::graduation(float pas, float min, float max) //retourn
     ax = Matrix_creux::nulle(N, 1);
     for (int i=0; i<N - 1; i++)
     {
-        ax.change_coeff(i, 0, i*pas + min);
+        (ax.val).push_back(i*pas + min);
     }
-    ax.change_coeff(N -1, 0, max);
+    (ax.val).push_back(max);
 
     return ax;
 }

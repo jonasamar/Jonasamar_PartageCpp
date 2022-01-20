@@ -4,8 +4,8 @@
 //
 //-------------------------------------------------------------------------
 
-#ifndef _MATRICE_
-#define _MATRICE_
+#ifndef _MATRICE_CREUX_
+#define _MATRICE_CREUX_
  
 #include <iostream>
 #include <vector>
